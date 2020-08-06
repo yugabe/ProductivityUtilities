@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZipSubfolders", "ZipSubfolders\ZipSubfolders.csproj", "{15718EE6-D7C5-46B4-B21B-87CB7B095DF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZipSubfolders", "ZipSubfolders\ZipSubfolders.csproj", "{15718EE6-D7C5-46B4-B21B-87CB7B095DF2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllocFile", "AllocFile\AllocFile.csproj", "{0CA3C4EA-0966-4D6B-BEA3-E92B5B2ABBAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{15718EE6-D7C5-46B4-B21B-87CB7B095DF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15718EE6-D7C5-46B4-B21B-87CB7B095DF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15718EE6-D7C5-46B4-B21B-87CB7B095DF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA3C4EA-0966-4D6B-BEA3-E92B5B2ABBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA3C4EA-0966-4D6B-BEA3-E92B5B2ABBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA3C4EA-0966-4D6B-BEA3-E92B5B2ABBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA3C4EA-0966-4D6B-BEA3-E92B5B2ABBAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
