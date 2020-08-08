@@ -7,6 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZipSubfolders", "ZipSubfold
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AllocFile", "AllocFile\AllocFile.csproj", "{0CA3C4EA-0966-4D6B-BEA3-E92B5B2ABBAF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkewSrt", "SkewSrt\SkewSrt.csproj", "{89D28D8A-0BC9-45C4-AFA9-D7E41B0880E9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2A5E6740-3205-420C-97FE-6B681B6DBBDD}"
+	ProjectSection(SolutionItems) = preProject
+		Common.props = Common.props
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +28,10 @@ Global
 		{0CA3C4EA-0966-4D6B-BEA3-E92B5B2ABBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA3C4EA-0966-4D6B-BEA3-E92B5B2ABBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA3C4EA-0966-4D6B-BEA3-E92B5B2ABBAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89D28D8A-0BC9-45C4-AFA9-D7E41B0880E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89D28D8A-0BC9-45C4-AFA9-D7E41B0880E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89D28D8A-0BC9-45C4-AFA9-D7E41B0880E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89D28D8A-0BC9-45C4-AFA9-D7E41B0880E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
