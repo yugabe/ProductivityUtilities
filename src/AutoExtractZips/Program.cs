@@ -3,7 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 
-var allFiles = new DirectoryInfo(args?[0] ?? Directory.GetCurrentDirectory()).EnumerateFiles("*.zip", SearchOption.AllDirectories).ToList();
+var allFiles = new DirectoryInfo(args?.FirstOrDefault() ?? Directory.GetCurrentDirectory()).EnumerateFiles("*.zip", SearchOption.AllDirectories).ToList();
 
 foreach (var (file, number) in allFiles.Select((f, i) => (f, i + 1)))
 {
