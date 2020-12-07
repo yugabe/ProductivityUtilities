@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AutoExtractZips": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\Gábor (BME)\\Downloads\\JS\""
+    }
+  }
+}
