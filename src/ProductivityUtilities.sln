@@ -17,6 +17,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoExtractZips", "AutoExtractZips\AutoExtractZips.csproj", "{98A5282B-C99C-4C67-BCB5-8EEC60677552}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MergeGen", "MergeGen\MergeGen.csproj", "{E3A3B584-4FD3-4025-A632-827246CC5868}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{98A5282B-C99C-4C67-BCB5-8EEC60677552}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98A5282B-C99C-4C67-BCB5-8EEC60677552}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98A5282B-C99C-4C67-BCB5-8EEC60677552}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3A3B584-4FD3-4025-A632-827246CC5868}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A3B584-4FD3-4025-A632-827246CC5868}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A3B584-4FD3-4025-A632-827246CC5868}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A3B584-4FD3-4025-A632-827246CC5868}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

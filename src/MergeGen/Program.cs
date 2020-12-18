@@ -8,9 +8,9 @@ using System.Linq;
 var now = DateTime.Now.ToString("yyyyddMM-HHmmss");
 if (args?.Length != 4 || args.Any(string.IsNullOrWhiteSpace))
 {
-    static string ReadNonEmpty(string message, string defaultValue = null)
+    static string ReadNonEmpty(string message, string? defaultValue = null)
     {
-        string result;
+        string? result;
         do
         {
             Console.WriteLine($"{message}{(defaultValue == null ? "" : $" (leave empty to use default '{defaultValue}')")}:");
