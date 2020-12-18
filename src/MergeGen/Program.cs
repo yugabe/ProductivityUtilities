@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 
 var now = DateTime.Now.ToString("yyyyddMM-HHmmss");
+
 if (args?.Length != 4 || args.Any(string.IsNullOrWhiteSpace))
 {
     static string ReadNonEmpty(string message, string? defaultValue = null)
@@ -55,10 +56,11 @@ foreach (var row in items)
     memoryStream.Position = 0;
     var document = new Document(memoryStream);
     document.MailMerge.Execute(headers, row);
-    var fileName = Path.Combine(Directory.CreateDirectory(args[2]).FullName, row[nameFieldIndex]);
+    var outputDir = Directory.CreateDirectory(args[2]).FullName;
+    var fileName = Path.Combine(outputDir, row[nameFieldIndex]);
     if (File.Exists(fileName))
     {
-        var backupName = $"{Path.GetFileNameWithoutExtension(fileName)} ({now}).{Path.GetExtension(fileName)}";
+        var backupName = Path.Combine(outputDir, $"{Path.GetFileNameWithoutExtension(fileName)} ({now}).{Path.GetExtension(fileName)}");
         File.Move(fileName, backupName);
         Console.WriteLine($"{Path.GetRelativePath(Directory.GetCurrentDirectory(), backupName)} backed up.");
     }
