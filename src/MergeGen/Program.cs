@@ -23,7 +23,7 @@ if (args?.Length != 4 || args.Any(string.IsNullOrWhiteSpace))
 
     var currentDirectory = new DirectoryInfo(Directory.GetCurrentDirectory());
 
-    Console.WriteLine("Usage:\nmergegen 'template.xlsx' 'template.docx' 'outputdirectory' 'outputnamefield'\nCtrl+C to exit or provide the parameters below.\n");
+    Console.WriteLine($"Usage:\nmergegen 'template.xlsx' 'template.docx' 'outputdirectory' 'outputnamefield'\n{(args?.Length == 0 ? "" : $"Arguments provided: {string.Join(", ", args!.Select(a => $"\"{a}\""))}\n")}Ctrl+C to exit or provide the parameters below.\n");
 
     args = new[] {
         ReadNonEmpty("Template Excel workbook", args?.ElementAtOrDefault(0) ?? currentDirectory.EnumerateFiles("*.xlsx").FirstOrDefault()?.Name),
@@ -67,12 +67,18 @@ foreach (var row in items)
     using var docStream = new MemoryStream();
     document.Save(docStream, SaveFormat.Docx);
     docStream.Position = 0;
-    
+
     using var docx = DocX.Load(docStream);
     docx.RemoveParagraphAt(0);
-    foreach(var picture in docx.Headers.first.Paragraphs.SelectMany(p => p.Pictures.Where(p => p.Height == 328 && p.Id is "rId2")))
+    var allHeaders = new[] { docx.Headers.first, docx.Headers.odd, docx.Headers.even }.Where(h => h != null);
+    var allFooters = new[] { docx.Footers.first, docx.Footers.odd, docx.Footers.even }.Where(h => h != null);
+    var allHeaderFooterParagraphs = allHeaders.SelectMany(h => h.Paragraphs).Concat(allFooters.SelectMany(f => f.Paragraphs));
+    foreach (var picture in allHeaderFooterParagraphs.SelectMany(p => p.Pictures).Where(p => p.Height == 328))
         picture.Remove();
-    
+
+    foreach (var paragraph in allHeaderFooterParagraphs.Where(p => p.Text.Contains("Aspose")))
+        paragraph.Remove(false);
+
     docx.SaveAs(fileName);
     Console.WriteLine($"{Path.GetRelativePath(Directory.GetCurrentDirectory(), fileName)} created.");
 }
