@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "StatCounter": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Users\\Gábor (BME)\\OneDrive - BME\\Shared\\C# és .NET alapozó kurzus - anyagok\""
+    }
+  }
+}
