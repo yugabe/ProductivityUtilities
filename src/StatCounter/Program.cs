@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 
 Console.WindowWidth = Console.BufferWidth = 200;
-var rootFolder = args.ElementAtOrDefault(0) ?? Directory.GetCurrentDirectory();
-Console.WriteLine($"Running StatCounter in folder \"{rootFolder}\"");
+var rootDirectory = new DirectoryInfo(args.ElementAtOrDefault(0) ?? Directory.GetCurrentDirectory());
+Console.WriteLine($"Running StatCounter in folder \"{rootDirectory.FullName}\"");
 
 var shell = (dynamic)Activator.CreateInstance(Type.GetTypeFromProgID("Shell.Application")!)!;
-Folder root = shell.NameSpace(rootFolder);
+Folder root = shell.NameSpace(rootDirectory.FullName);
 var headers = Enumerable.Range(0, short.MaxValue)
     .Select(i => (index: i, header: root.GetDetailsOf(null, i)))
     .Where(e => !string.IsNullOrEmpty(e.header))
@@ -19,7 +19,7 @@ var slidesProp = headers["Slides"].Single();
 
 var sum = (length: new TimeSpan(), slides: 0);
 var s = new StringBuilder().AppendLine("Fejezet\tLecke\tÖsszes hossz\tÖsszes diaszám\tFájlnév\tHossz\tDiaszám");
-foreach (var file in new DirectoryInfo(rootFolder).EnumerateFiles("*.*", SearchOption.AllDirectories).Where(f => f.Extension is ".mp4" or ".pptx" && !f.FullName.Contains("Nyers")).OrderBy(f => f.FullName))
+foreach (var file in rootDirectory.EnumerateFiles("*.*", SearchOption.AllDirectories).Where(f => f.Extension is ".mp4" or ".pptx" && !f.FullName.Contains("Nyers")).OrderBy(f => f.FullName))
 {
     Folder folder = shell.NameSpace(file.DirectoryName);
     var folderItem = folder.ParseName(file.Name);
@@ -33,9 +33,10 @@ foreach (var file in new DirectoryInfo(rootFolder).EnumerateFiles("*.*", SearchO
         sum = (sum.length, sum.slides + slidesVal);
 
     s.AppendLine(string.Join('\t', file.Directory!.Parent!.Name, file.Directory.Name, "", "", file.Name, length, slides));
-    Console.WriteLine($"{Path.GetRelativePath(rootFolder, file.DirectoryName!),-100} {file.Name,-70}{length,-12}{(slidesVal < 35 ? slides : $"({slides})")}");
+    Console.WriteLine($"{Path.GetRelativePath(rootDirectory.FullName, file.DirectoryName!),-100} {file.Name,-70}{length,-12}{(slidesVal < 35 ? slides : $"({slides})")}");
 }
 
-File.WriteAllText($"{Path.GetDirectoryName(rootFolder)}.tsv", s.ToString());
+var outFile = $"{rootDirectory.Name}.tsv";
+File.WriteAllText(outFile, s.ToString());
 
-Console.WriteLine($"Total: {sum.length}, {sum.slides} slides");
+Console.WriteLine($"Total: {sum.length}, {sum.slides} slides\nSaved data to file \"{outFile}\".");
