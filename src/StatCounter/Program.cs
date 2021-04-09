@@ -8,7 +8,7 @@ Console.WindowWidth = Console.BufferWidth = 200;
 var rootFolder = args.ElementAtOrDefault(0) ?? Directory.GetCurrentDirectory();
 Console.WriteLine($"Running StatCounter in folder \"{rootFolder}\"");
 
-var shell = (dynamic)Activator.CreateInstance(Type.GetTypeFromProgID("Shell.Application"));
+var shell = (dynamic)Activator.CreateInstance(Type.GetTypeFromProgID("Shell.Application")!)!;
 Folder root = shell.NameSpace(rootFolder);
 var headers = Enumerable.Range(0, short.MaxValue)
     .Select(i => (index: i, header: root.GetDetailsOf(null, i)))
@@ -32,10 +32,10 @@ foreach (var file in new DirectoryInfo(rootFolder).EnumerateFiles("*.*", SearchO
     if (int.TryParse(slides, out var slidesVal) && slidesVal < 35)
         sum = (sum.length, sum.slides + slidesVal);
 
-    s.AppendLine(string.Join('\t', file.Directory.Parent.Name, file.Directory.Name, "", "", file.Name, length, slides));
-    Console.WriteLine($"{Path.GetRelativePath(rootFolder, file.DirectoryName),-100} {file.Name,-70}{length,-12}{(slidesVal < 35 ? slides : $"({slides})")}");
+    s.AppendLine(string.Join('\t', file.Directory!.Parent!.Name, file.Directory.Name, "", "", file.Name, length, slides));
+    Console.WriteLine($"{Path.GetRelativePath(rootFolder, file.DirectoryName!),-100} {file.Name,-70}{length,-12}{(slidesVal < 35 ? slides : $"({slides})")}");
 }
 
-File.WriteAllText("C# és .NET alapozó kurzus - statisztika.tsv", s.ToString());
+File.WriteAllText($"{Path.GetDirectoryName(rootFolder)}.tsv", s.ToString());
 
 Console.WriteLine($"Total: {sum.length}, {sum.slides} slides");
