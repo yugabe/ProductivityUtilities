@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MergeGen", "MergeGen\MergeG
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatCounter", "StatCounter\StatCounter.csproj", "{A7FE9303-4172-4DD4-91C3-025CE4872AF6}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GenerateWUStructure", "GenerateWUStructure\GenerateWUStructure.csproj", "{9F85B7C2-4416-4132-8A2F-AB51B50B627F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{A7FE9303-4172-4DD4-91C3-025CE4872AF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7FE9303-4172-4DD4-91C3-025CE4872AF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7FE9303-4172-4DD4-91C3-025CE4872AF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F85B7C2-4416-4132-8A2F-AB51B50B627F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F85B7C2-4416-4132-8A2F-AB51B50B627F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F85B7C2-4416-4132-8A2F-AB51B50B627F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F85B7C2-4416-4132-8A2F-AB51B50B627F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
