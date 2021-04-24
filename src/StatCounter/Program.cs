@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 
 Console.WindowWidth = Console.BufferWidth = 200;
-var rootDirectory = new DirectoryInfo(args.ElementAtOrDefault(0) ?? Directory.GetCurrentDirectory());
+if (args?.Length == 0)
+    args = new [] { Directory.GetCurrentDirectory() };
+var rootDirectory = new DirectoryInfo(args![0]);
 Console.WriteLine($"Running StatCounter in folder \"{rootDirectory.FullName}\"");
 
 var shell = (dynamic)Activator.CreateInstance(Type.GetTypeFromProgID("Shell.Application")!)!;
@@ -19,7 +21,7 @@ var slidesProp = headers["Slides"].Single();
 
 var sum = (length: new TimeSpan(), slides: 0);
 var s = new StringBuilder().AppendLine("Fejezet\tLecke\tÖsszes hossz\tÖsszes diaszám\tFájlnév\tHossz\tDiaszám");
-foreach (var file in rootDirectory.EnumerateFiles("*.*", SearchOption.AllDirectories).Where(f => f.Extension is ".mp4" or ".pptx" && !f.FullName.Contains("Nyers")).OrderBy(f => f.FullName))
+foreach (var file in rootDirectory.EnumerateFiles("*.*", SearchOption.AllDirectories).Where(f => f.Extension is ".mp4" or ".pptx" && args.Skip(1).All(b =>  !f.FullName.Contains(b))).OrderBy(f => f.FullName))
 {
     Folder folder = shell.NameSpace(file.DirectoryName);
     var folderItem = folder.ParseName(file.Name);
