@@ -1,9 +1,6 @@
 ﻿using Aspose.Words;
 using Novacode;
 using OfficeOpenXml;
-using System;
-using System.IO;
-using System.Linq;
 
 var now = DateTime.Now.ToString("yyyyddMM-HHmmss");
 
@@ -25,12 +22,12 @@ if (args?.Length != 4 || args.Any(string.IsNullOrWhiteSpace))
 
     Console.WriteLine($"Usage:\nmergegen 'template.xlsx' 'template.docx' 'outputdirectory' 'outputnamefield'\n{(args?.Length == 0 ? "" : $"Arguments provided: {string.Join(", ", args!.Select(a => $"\"{a}\""))}\n")}Ctrl+C to exit or provide the parameters below.\n");
 
-    args = new[] {
+    args = [
         ReadNonEmpty("Template Excel workbook", args?.ElementAtOrDefault(0) ?? currentDirectory.EnumerateFiles("*.xlsx").FirstOrDefault()?.Name),
         ReadNonEmpty("Template Word document", args?.ElementAtOrDefault(1) ?? currentDirectory.EnumerateFiles("*.docx").FirstOrDefault()?.Name),
         ReadNonEmpty("Output directory", args?.ElementAtOrDefault(2) ?? $"MergeGen-{now}"),
         ReadNonEmpty("Output name field in template Excel", args?.ElementAtOrDefault(3) ?? "Filename")
-    };
+    ];
 }
 
 string[] headers;

@@ -1,9 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<ItemGroup>
-		<PackageReference Include="Aspose.Words" Version="20.12.0" />
-		<PackageReference Include="DocXCore" Version="1.0.9" />
-		<PackageReference Include="EPPlus" Version="5.4.2" />
+		<PackageReference Include="Aspose.Words" />
+		<PackageReference Include="DocXCore" />
+		<PackageReference Include="EPPlus" />
+		<PackageReference Include="System.Text.Json" />
 	</ItemGroup>
 
 </Project>

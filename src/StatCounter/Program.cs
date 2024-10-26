@@ -1,12 +1,9 @@
 ﻿using Shell32;
-using System;
-using System.IO;
-using System.Linq;
 using System.Text;
 
 Console.WindowWidth = Console.BufferWidth = 200;
 if (args?.Length == 0)
-    args = new [] { Directory.GetCurrentDirectory() };
+    args = [Directory.GetCurrentDirectory()];
 var rootDirectory = new DirectoryInfo(args![0]);
 Console.WriteLine($"Running StatCounter in folder \"{rootDirectory.FullName}\"");
 

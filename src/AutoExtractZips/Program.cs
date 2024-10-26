@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-using System.IO.Compression;
-using System.Linq;
+﻿using System.IO.Compression;
 
 var allFiles = new DirectoryInfo(args?.FirstOrDefault() ?? Directory.GetCurrentDirectory()).EnumerateFiles("*.zip", SearchOption.AllDirectories).ToList();
 

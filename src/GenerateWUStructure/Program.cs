@@ -1,7 +1,5 @@
 ﻿using GemBox.Presentation;
 using OfficeOpenXml;
-using System.IO;
-using System.Linq;
 
 static string N(string name) => new(name.SelectMany(c => c is ':' ? " -" : c.ToString()).Where(c => !Path.GetInvalidFileNameChars().Contains(c)).ToArray());
 ComponentInfo.SetLicense("FREE-LIMITED-KEY");
